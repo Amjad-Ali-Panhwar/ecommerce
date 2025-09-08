@@ -17,8 +17,15 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password');                            // Hashed password
+            $table->string('phone')->nullable();                    // Phone number
+            $table->date('dob')->nullable();                        // date of birth
+            $table->string('gender')->nullable();                   // male/female/other                  
+            $table->string('image')->nullable();                    // Profile picture path
+            $table->enum('status', ['active', 'inactive'])->default('active'); // Account status
+            $table->timestamp('email_verified_at')->nullable();    // Email verification
+            $table->timestamp('last_seen_at')->nullable();         // Last seen timestamp
+            $table->timestamp('last_login_at')->nullable();         // Last login timestamp
             $table->rememberToken();
             $table->timestamps();
         });

@@ -17,9 +17,10 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->decimal('price', 8, 2);
-            $table->text('description')->nullable();    
-            $table->timestamps();
+            $table->text('description')->nullable();  
+            $table->enum('status', ['active', 'inactive'])->default('active'); // Account status
             $table->softDeletes();
+            $table->timestamps();
             $table->index(['name', 'price']);
         });
     }
